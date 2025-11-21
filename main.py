@@ -137,9 +137,9 @@ app.add_middleware(
 
 # Datos de los torneos(Se borran cuando tenga la BD)
 torneos_db = [
-    {"id": 1, "titulo": "Copa del mundo 2026", "imgLink": "Mundial.jpeg", "descripcion": "Inicia Junio 2026", "fase": "Previa", "estado": "Proximo"},
-    {"id": 2, "titulo": "F1 2026", "imgLink": "f1.webp", "descripcion": "Inicia Junio 2025", "fase": "Ultimas carreras", "estado": "Activo"},
-    {"id": 3, "titulo": "Moto Gp 2025", "imgLink": "motoGp.jpg", "descripcion": "Finalizon en noviembre 2025", "fase": "Fases de grupos", "estado": "Activo"},
+    {"id": 1, "titulo": "Copa del mundo 2026", "imgLink": "Mundial.jpeg", "descripcion": "Inicia Junio 2026", "fase": "Previa", "estado": "Proximos"},
+    {"id": 2, "titulo": "F1 2026", "imgLink": "f1.webp", "descripcion": "Inicia Junio 2025", "fase": "Ultimas carreras", "estado": "Activos"},
+    {"id": 3, "titulo": "Moto Gp 2025", "imgLink": "motoGp.jpg", "descripcion": "Finalizon en noviembre 2025", "fase": "Fases de grupos", "estado": "Inactivos"},
     
 ]
 
