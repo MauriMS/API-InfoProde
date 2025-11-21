@@ -144,9 +144,9 @@ app.add_middleware(
 
 # Datos de los torneos(Se borran cuando tenga la BD)
 torneos_db = [
-    {"id": 1, "titulo": "Copa del mundo 2026", "imgLink": "Mundial.jpeg", "descripcion": "Inicia Junio 2026", "fase": "Previa", "estado": "Proximos"},
-    {"id": 2, "titulo": "F1 2026", "imgLink": "f1.webp", "descripcion": "Inicia Junio 2025", "fase": "Ultimas carreras", "estado": "Activos"},
-    {"id": 3, "titulo": "Moto Gp 2025", "imgLink": "motoGp.jpg", "descripcion": "Finalizon en noviembre 2025", "fase": "Fases de grupos", "estado": "Inactivos"},
+    {"id": 1, "titulo": "Copa del mundo 2026", "imgLink": "./assets/Mundial.jpeg", "descripcion": "Inicia Junio 2026", "fase": "Previa", "estado": "Proximos"},
+    {"id": 2, "titulo": "F1 2026", "imgLink": "./assets/f1.webp", "descripcion": "Inicia Junio 2025", "fase": "Ultimas carreras", "estado": "Activos"},
+    {"id": 3, "titulo": "Moto Gp 2025", "imgLink": "./assets/motoGp.jpg", "descripcion": "Finalizon en noviembre 2025", "fase": "Fases de grupos", "estado": "Inactivos"},
     
 ]
 
@@ -174,15 +174,3 @@ async def get_clasificacion_pilotos():
 async def get_torneos():
     return torneos_db
 
-@app.post("/torneos", response_model=Torneo)
-async def create_torneo(torneo: TorneoCreate):
-    new_id = 1
-    if torneos_db:
-        new_id = max(t["id"] for t in torneos_db) + 1
-    
-    nuevo_torneo_data = torneo.model_dump() 
-    nuevo_torneo_data["id"] = new_id
-
-    torneos_db.append(nuevo_torneo_data)
-    
-    return nuevo_torneo_data
