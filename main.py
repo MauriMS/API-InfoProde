@@ -30,6 +30,13 @@ class Torneo(BaseModel):
     descripcion: str
     fase: str
     estado: str
+    
+class TorneoCreate(BaseModel):
+    titulo: str
+    imgLink: str
+    descripcion: str
+    fase: str
+    estado: str
 
 
 # web scraping
@@ -166,3 +173,16 @@ async def get_clasificacion_pilotos():
 @app.get("/torneos")
 async def get_torneos():
     return torneos_db
+
+@app.post("/torneos", response_model=Torneo)
+async def create_torneo(torneo: TorneoCreate):
+    new_id = 1
+    if torneos_db:
+        new_id = max(t["id"] for t in torneos_db) + 1
+    
+    nuevo_torneo_data = torneo.model_dump() 
+    nuevo_torneo_data["id"] = new_id
+
+    torneos_db.append(nuevo_torneo_data)
+    
+    return nuevo_torneo_data
